@@ -1,6 +1,5 @@
 package com.zbrickx.crudemployee.rest;
 
-import com.zbrickx.crudemployee.dao.EmployeeDao;
 import com.zbrickx.crudemployee.entity.Employee;
 import com.zbrickx.crudemployee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
