@@ -2,6 +2,8 @@ package com.zbrickx.crudemployee.rest;
 
 import com.zbrickx.crudemployee.dao.EmployeeDao;
 import com.zbrickx.crudemployee.entity.Employee;
+import com.zbrickx.crudemployee.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,14 +14,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    private EmployeeDao employeeDao;
+    private EmployeeService serviceEmployee;
 
-    public EmployeeRestController(EmployeeDao employeeDao){
-        this.employeeDao = employeeDao;
+    @Autowired
+    public EmployeeRestController(EmployeeService serviceEmployee){
+        this.serviceEmployee = serviceEmployee;
     }
 
     @GetMapping("/employees")
     public List<Employee> findAll(){
-        return employeeDao.findAll();
+        return serviceEmployee.findAll();
     }
 }
