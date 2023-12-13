@@ -42,5 +42,20 @@ public class EmployeeRestController {
         return newEmp;
     }
 
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        Employee updatedEmployee = serviceEmployee.save(employee);
+        return updatedEmployee;
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable int id){
+        Boolean isDeleted  = serviceEmployee.deleteById(id);
+        if(isDeleted)
+            return "Employee with id: " + id + " successfully deleted";
+        else
+            return "Employee with id: " + id + " does not exist in our database";
+    }
+
 
 }
